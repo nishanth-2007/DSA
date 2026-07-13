@@ -25,8 +25,8 @@ class Solution {
         int target=0;
         int a=leftMost(nums,target);
         int b=rightMost(nums,target);
-        int countP=nums.length-(b+1);
-        int countN=a;
-        return Math.max(countP,countN);
+        int pos=nums.length-(b+1);
+        int neg=a;
+        return Math.max(pos,neg);
     }
 }
