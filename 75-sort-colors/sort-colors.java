@@ -8,7 +8,7 @@ class Solution {
         }
         for(int a=0;a<c0;a++) nums[a]=0;
         for(int b=c0;b<c0+c1;b++) nums[b]=1;
-        for(int c=c0+c1;c<c0+c1+c2;c++) nums[c]=2;
+        for(int c=c0+c1;c<nums.length;c++) nums[c]=2;
         return nums;
     }
     public void sortColors(int[] nums) {
