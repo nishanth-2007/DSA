@@ -12,7 +12,10 @@ class Solution {
     }
     public int minimizedMaximum(int n, int[] quantities) {
         int l=1;
-        int r=(int)Math.pow(10,5);
+        int r=0;
+        for(int i=0;i<quantities.length;i++){
+            if(quantities[i]>r) r=quantities[i];
+        }
         while(l<=r){
             int mid=l+(r-l)/2;
             if(isPossible(quantities,n,mid)) r=mid-1;
