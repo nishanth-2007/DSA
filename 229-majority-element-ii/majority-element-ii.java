@@ -27,6 +27,7 @@ class Solution {
         }
         if(cnt1>n/3) ans.add(el1);
         if(cnt2>n/3) ans.add(el2);
+        Collections.sort(ans);
         return ans;
     }
 }
