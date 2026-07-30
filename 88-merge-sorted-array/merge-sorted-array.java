@@ -1,13 +1,11 @@
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        for(int i=m;i<m+n;i++){
-            nums1[i]=nums2[i-m];
+        int l=m,r=0;
+        while(l<m+n && r<n){
+            nums1[l]=nums2[r];
+            l++;
+            r++;
         }
-
-         if(m==0) {
-            for(int i=0;i<nums2.length;i++) nums1[i]=nums2[i];
-        }
-
         Arrays.sort(nums1);
        
     }
