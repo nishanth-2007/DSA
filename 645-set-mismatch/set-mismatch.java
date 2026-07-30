@@ -8,6 +8,7 @@ class Solution {
             }
             if(cnt==2) repeat=i;
             if(cnt==0) missing=i;
+            if(repeat!=-1 && missing!=-1) break;
         }
         return new int[] {repeat,missing};
     }
