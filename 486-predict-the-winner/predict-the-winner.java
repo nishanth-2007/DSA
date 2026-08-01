@@ -1,7 +1,7 @@
 class Solution {
     public boolean predictTheWinner(int[] nums) {
         int  n=nums.length;
-        if(n%2==0 || n==1) return true;
+        if(n%2==0 ) return true;
         int[] dp=nums.clone();
 
         for(int i=n-1;i>=0;i--){
