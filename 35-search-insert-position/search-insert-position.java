@@ -4,21 +4,9 @@ class Solution {
         int ans=0;
         while(low<=high){
             int mid=(low+high)/2;
-            if(nums[mid]==target) {
-                return mid;
-            }
-            else if(nums[mid]>target) {
-                ans=mid;
-                System.out.println(ans);
-                high=mid-1;
-            }
-            else {
-                low=mid+1;
-                ans=low;
-                System.out.println(low);
-            }
-
+            if(nums[mid]>=target) high=mid-1;
+            else low=mid+1;
         }
-        return ans;
+        return low;
     }
 }
