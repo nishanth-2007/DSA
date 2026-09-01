@@ -1,27 +1,38 @@
 class Solution {
-    public boolean isPossible(int[] bloomDay,int m,int k,int day){
-        int took=0;
-        for(int i=0;i<bloomDay.length;i++){
-            if(bloomDay[i]<=day) took++;
-            else took=0;
-
-            if(took==k){
-                m-=1;
-                took=0;
+    public boolean fun(int[] a,int day,int m,int k){
+        int noB=0;
+        int cnt=0;
+        for(int j=0;j<a.length;j++){
+            if(a[j]<=day) {
+                cnt++;
             }
-            if(m==0) return true;
+            else {
+                noB+= (cnt/k);
+                cnt=0;
+            }
         }
-        return false;
+        noB+=(cnt/k);
+        if(noB>=m) return true;
+        else return false;
     }
     public int minDays(int[] bloomDay, int m, int k) {
-        int l=1,r=(int)Math.pow(10,9);
-        while(l<=r){
-            int mid=l+(r-l)/2;
-            if(isPossible(bloomDay,m,k,mid)) r=mid-1;
-            else l=mid+1;
+        if(bloomDay.length< (long) m*k) return -1;
+        int min=Integer.MAX_VALUE;
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<bloomDay.length;i++){
+            if(bloomDay[i]<min){
+                min=bloomDay[i];
+            }
+            if(bloomDay[i]>max){
+                max=bloomDay[i];
+            }
         }
-        int exeed=(int)Math.pow(10,9);
-        if(l==exeed+1) return -1;
-        return l;
+        int low=min,high=max;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            if(fun(bloomDay,mid,m,k)) high=mid-1;
+            else low=mid+1;
+        }
+        return low;
     }
 }
