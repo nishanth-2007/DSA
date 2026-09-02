@@ -1,23 +1,25 @@
 class Solution {
-    public boolean isPossible(int nums[],int th,int k){
-        for(int i=0;i<nums.length;i++){
-            int upper=nums[i]/k;
-            if(nums[i]%k !=0) upper++;
-            th-=upper;
-            if(th<0) return false;
+    public int possible(int a[],int th,int div){
+        int sum=0;
+        for(int j=0;j<a.length;j++){
+            int x=a[j];
+            sum+=(int)Math.ceil((double)x/div);
         }
-        return true;
+        return sum;
     }
     public int smallestDivisor(int[] nums, int threshold) {
-       int l=1;
-       int r=1000000;
-       while(l<=r){
-        int mid=l+(r-l)/2;
+        int max=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>max) max=nums[i];
+        }
 
-        if(isPossible(nums,threshold,mid)) r=mid-1;
-        else l=mid+1;
-       }
-       return l;
+        int low=1,high=max;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            int ans=possible(nums,threshold,mid);
+            if(ans<=threshold) high=mid-1;
+            else low=mid+1;
+        } 
+        return low;
     }
-    
 }
