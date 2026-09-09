@@ -1,25 +1,32 @@
 class Solution {
-    public boolean isPossible(int nums[],int k,int max){
-        int temp=0;
+    public boolean isPossible(int nums[],int k,int maxSum){
+        int splitCnt=1;
+        int sum=0;
         for(int i=0;i<nums.length;i++){
-            if(nums[i]>max) return false;
-            if(temp+nums[i]>max){
-                temp=0;
-                k--;
+            if(maxSum<nums[i]) return false;
+            if(sum+nums[i]>maxSum){
+                splitCnt++;
+                sum=nums[i];
             }
-            temp+=nums[i];
-            if(k<=0) return false;
+            else{
+                sum+=nums[i];
+            }
         }
-        return true;
+        if(splitCnt<=k) return true;
+        else return false;
     }
     public int splitArray(int[] nums, int k) {
-        int l=0;
-        int r= Integer.MAX_VALUE;
-        while(l<=r){
-            int mid=l+(r-l)/2;
-            if(isPossible(nums,k,mid)) r=mid-1;
-            else l=mid+1;
+        int low=Integer.MAX_VALUE, high=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]<low) low=nums[i];
+            high+=nums[i];
         }
-        return l;
+
+        while(low<=high){
+            int mid=(low+high)/2;
+            if(isPossible(nums,k,mid)) high=mid-1;
+            else low=mid+1;
+        }
+        return low;
     }
 }
