@@ -9,7 +9,7 @@ class Solution {
         return true;
     }
     public String longestPalindrome(String s) {
-        // if(s.length()<=1) return s;
+        if(s.length()<=1) return s;
 
         int maxLen=1;
         String maxPalindrome=s.substring(0,1);
