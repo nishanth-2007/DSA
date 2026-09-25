@@ -10,6 +10,7 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
+        Stack<Integer> st=new Stack<>();
         ListNode prev=null;
         ListNode cur=head;
         while(cur!=null){
