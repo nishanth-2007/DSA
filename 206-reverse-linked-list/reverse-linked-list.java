@@ -16,10 +16,10 @@ class Solution {
             st.push(temp.val);
             temp=temp.next;
         }
-        ListNode temp2=head;
-        while(!st.empty() && temp2!=null ){
-            temp2.val=st.pop();
-            temp2=temp2.next;
+        temp=head;
+        while(!st.empty() && temp!=null ){
+            temp.val=st.pop();
+            temp=temp.next;
         }
         return head;
         // ListNode prev=null;
