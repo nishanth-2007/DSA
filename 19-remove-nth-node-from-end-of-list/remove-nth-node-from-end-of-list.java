@@ -22,10 +22,10 @@ class Solution {
     // }
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if(head==null ) return head;
-        if(head.next==null) {
-            if(n==1) return null;
-            else return head;
-        }
+        // if(head.next==null) {
+        //     if(n==1) return null;
+        //     else return head;
+        // }
         ListNode fast=head;
         ListNode slow=head;
         for(int i=0;i<n;i++){
