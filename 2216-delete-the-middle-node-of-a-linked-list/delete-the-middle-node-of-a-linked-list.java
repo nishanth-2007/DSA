@@ -19,21 +19,19 @@ class Solution {
             cnt++;
             temp=temp.next;
         }
-        int req=(cnt/2)+1;
+        int req=(cnt/2);
         temp=head;
         cnt=0;
         while(temp!=null){
             cnt++;
-            if(cnt== req-1){
-                prev=temp;
-            }
+            
             if(cnt==req){
-                mid=temp;
+                prev=temp;
                 break;
             }
             temp=temp.next;
         }
-        prev.next=mid.next;
+        prev.next=prev.next.next;
         return head;
     }
 }
