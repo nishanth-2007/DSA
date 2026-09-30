@@ -10,18 +10,27 @@
  * }
  */
 public class Solution {
+    // public ListNode collision(ListNode temp1,ListNode temp2,int d){
+    //     for(int i=0;i<d;i++) temp1=temp1.next;
+    //     while(temp1!=null){
+    //         if(temp1==temp2) return temp1;
+    //         temp1=temp1.next;
+    //         temp2=temp2.next;
+    //     }
+    //     return null;
+    // }
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        HashMap <ListNode,Integer> hm=new HashMap<>();
         ListNode temp1=headA;
         ListNode temp2=headB;
-        while(temp1!=null){
-            hm.put(temp1,1);
+        while(temp1 !=  temp2){
             temp1=temp1.next;
-        }
-        while(temp2!=null){
-            if(hm.containsKey(temp2)) return temp2;
             temp2=temp2.next;
+
+            if(temp1==temp2) return temp1;
+
+            if(temp1==null) temp1=headB;
+            if(temp2==null) temp2=headA;
         }
-        return null;
+        return temp1;
     }
 }
