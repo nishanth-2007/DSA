@@ -14,8 +14,8 @@ public class Solution {
         Map<ListNode,Integer> hm=new HashMap<>();
         ListNode temp=head;
         while(temp!=null){
-            hm.put(temp,hm.getOrDefault(temp,0)+1);
-            if(hm.get(temp)==2) return temp;
+            if(hm.containsKey(temp)) return temp;
+            hm.put(temp,1);
             temp=temp.next;
         }
         return null;
